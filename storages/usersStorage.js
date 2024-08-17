@@ -8,7 +8,8 @@ class UsersStorage {
   
     addUser({ firstName, lastName, email, age, bio }) {
       const id = this.id;
-      this.storage[id] = { id, firstName, lastName, email, age, bio };
+      const ageInt = parseInt(age)
+      this.storage[id] = { id, firstName, lastName, email, age: ageInt, bio };
       this.id++;
     }
   
@@ -20,8 +21,9 @@ class UsersStorage {
       return this.storage[id];
     }
   
-    updateUser(id, { firstName, lastName }) {
-      this.storage[id] = { id, firstName, lastName };
+    updateUser(id, { firstName, lastName, email, age, bio }) {
+      const ageInt = parseInt(age)
+      this.storage[id] = { id, firstName, lastName, email, age: ageInt, bio };
     }
   
     deleteUser(id) {
